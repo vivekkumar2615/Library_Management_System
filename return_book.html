@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Return Book
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-card">
+
+    <h1>
+        ↩️ Return Book
+    </h1>
+
+    <p>
+        You can return an issued book from
+        the Issue / Return page.
+    </p>
+
+
+    <a
+        class="btn primary"
+        href="{{ url_for('issue') }}"
+    >
+
+        Go to Issue / Return
+
+    </a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}
+Issue and Return Book
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <h1>
+            🔄 Issue / Return
+        </h1>
+
+        <p>
+            Issue books to students and manage returns.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="form-card compact">
+
+    <h2>
+        📖 Issue Book
+    </h2>
+
+
+    <form
+        method="POST"
+        class="grid-form"
+    >
+
+
+        <select
+            name="book_id"
+            required
+        >
+
+            <option value="">
+                Select Book
+            </option>
+
+
+            {% for book in books %}
+
+            <option value="{{ book.id }}">
+
+                {{ book.title }}
+                -
+                {{ book.author }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <select
+            name="student_id"
+            required
+        >
+
+            <option value="">
+                Select Student
+            </option>
+
+
+            {% for student in students %}
+
+            <option value="{{ student.id }}">
+
+                {{ student.name }}
+                -
+                {{ student.roll_number }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <button class="btn primary">
+
+            📖 Issue Book
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>Book</th>
+
+    <th>Student</th>
+
+    <th>Issue Date</th>
+
+    <th>Due Date</th>
+
+    <th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for issue in issues %}
+
+<tr>
+
+    <td>
+        {{ issue.book_title }}
+    </td>
+
+    <td>
+        {{ issue.student_name }}
+    </td>
+
+    <td>
+        {{ issue.issue_date }}
+    </td>
+
+    <td>
+        {{ issue.due_date }}
+    </td>
+
+    <td>
+
+        <a
+            class="btn small"
+            href="{{ url_for('return_issue', issue_id=issue.id) }}"
+        >
+
+            ↩️ Return
+
+        </a>
+
+    </td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+    <td colspan="5"
+        class="empty">
+
+        No active issued books.
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

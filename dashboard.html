@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="badge">
+            ADMIN PANEL
+        </span>
+
+        <h1>
+            📊 Dashboard
+        </h1>
+
+        <p>
+            Welcome to Library Management System.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="stat">
+        <span>📚</span>
+        <h3>{{ stats.books }}</h3>
+        <p>Book Titles</p>
+    </div>
+
+
+    <div class="stat">
+        <span>📦</span>
+        <h3>{{ stats.copies }}</h3>
+        <p>Total Copies</p>
+    </div>
+
+
+    <div class="stat">
+        <span>✅</span>
+        <h3>{{ stats.available }}</h3>
+        <p>Available Books</p>
+    </div>
+
+
+    <div class="stat">
+        <span>👨‍🎓</span>
+        <h3>{{ stats.students }}</h3>
+        <p>Students</p>
+    </div>
+
+
+    <div class="stat">
+        <span>🔄</span>
+        <h3>{{ stats.issued }}</h3>
+        <p>Issued Books</p>
+    </div>
+
+</div>
+
+
+<div class="quick">
+
+    <a class="btn primary"
+       href="{{ url_for('add_book_page') }}">
+        ➕ Add Book
+    </a>
+
+
+    <a class="btn"
+       href="{{ url_for('books') }}">
+        📚 View Books
+    </a>
+
+
+    <a class="btn"
+       href="{{ url_for('students') }}">
+        👨‍🎓 Students
+    </a>
+
+
+    <a class="btn"
+       href="{{ url_for('issue') }}">
+        🔄 Issue / Return
+    </a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}
+Students
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <h1>
+            👨‍🎓 Students
+        </h1>
+
+        <p>
+            Manage library students.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="form-card compact">
+
+    <h2>
+        ➕ Add Student
+    </h2>
+
+
+    <form
+        method="POST"
+        action="{{ url_for('add_student_page') }}"
+        class="grid-form"
+    >
+
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Student Name"
+            required
+        >
+
+
+        <input
+            type="text"
+            name="roll_number"
+            placeholder="Roll Number"
+            required
+        >
+
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+        >
+
+
+        <input
+            type="text"
+            name="phone"
+            placeholder="Phone Number"
+        >
+
+
+        <button class="btn primary">
+
+            Add Student
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>ID</th>
+
+    <th>Name</th>
+
+    <th>Roll Number</th>
+
+    <th>Email</th>
+
+    <th>Phone</th>
+
+    <th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for student in students %}
+
+<tr>
+
+    <td>
+        {{ student.id }}
+    </td>
+
+    <td>
+        {{ student.name }}
+    </td>
+
+    <td>
+        {{ student.roll_number }}
+    </td>
+
+    <td>
+        {{ student.email }}
+    </td>
+
+    <td>
+        {{ student.phone }}
+    </td>
+
+    <td>
+
+        <a
+            class="danger-text"
+            href="{{ url_for('remove_student', student_id=student.id) }}"
+            onclick="return confirm('Delete this student?')"
+        >
+
+            🗑️ Delete
+
+        </a>
+
+    </td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+    <td colspan="6"
+        class="empty">
+
+        No students found.
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

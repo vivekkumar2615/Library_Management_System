@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{{ "Edit Book" if edit else "Add Book" }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-card">
+
+    <h1>
+
+        {{ "✏️ Edit Book" if edit else "➕ Add New Book" }}
+
+    </h1>
+
+
+    <form method="POST">
+
+
+        <label>
+            Book Title
+        </label>
+
+        <input
+            type="text"
+            name="title"
+            value="{{ book.title if edit else '' }}"
+            placeholder="Enter book title"
+            required
+        >
+
+
+        <label>
+            Author
+        </label>
+
+        <input
+            type="text"
+            name="author"
+            value="{{ book.author if edit else '' }}"
+            placeholder="Enter author name"
+            required
+        >
+
+
+        <label>
+            Category
+        </label>
+
+        <input
+            type="text"
+            name="category"
+            value="{{ book.category if edit else '' }}"
+            placeholder="Example: Programming"
+        >
+
+
+        <label>
+            ISBN
+        </label>
+
+        <input
+            type="text"
+            name="isbn"
+            value="{{ book.isbn if edit else '' }}"
+            placeholder="Enter ISBN"
+        >
+
+
+        <label>
+            Quantity
+        </label>
+
+        <input
+            type="number"
+            name="quantity"
+            min="1"
+            value="{{ book.quantity if edit else 1 }}"
+            required
+        >
+
+
+        <br><br>
+
+
+        <button class="btn primary">
+
+            {{ "Update Book" if edit else "Add Book" }}
+
+        </button>
+
+
+        <a
+            class="btn"
+            href="{{ url_for('books') }}"
+        >
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+Library Management System
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <span class="badge">
+        HTML • CSS • Python Flask • SQLite
+    </span>
+
+    <h1>
+        Library Management System
+    </h1>
+
+    <p>
+        Manage books, students, book issue and return
+        records from one simple system.
+    </p>
+
+    <a class="btn primary"
+       href="{{ url_for('login') }}">
+        Login to System
+    </a>
+
+</section>
+
+
+<div class="cards three">
+
+    <div class="info-card">
+
+        <h3>
+            📚 Books
+        </h3>
+
+        <p>
+            Add, search, edit and delete books.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <h3>
+            👨‍🎓 Students
+        </h3>
+
+        <p>
+            Manage student library records.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <h3>
+            🔄 Issue & Return
+        </h3>
+
+        <p>
+            Issue books and track returns.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
